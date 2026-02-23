@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 Greener India - Environmental Awareness Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/cursor.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-outer"></div>
+    <div class="cursor-inner"></div>
+    <div class="cursor-particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🌍 Greener India</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#calculators" class="nav-link">Calculators</a></li>
+                <li><a href="#learn" class="nav-link">Learn</a></li>
+                <li><a href="#quiz" class="nav-link">Quiz</a></li>
+                <li><a href="#actions" class="nav-link">Actions</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="particle-field"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-headline">
+                <span class="word">A</span>
+                <span class="word">Greener</span>
+                <span class="word">India</span>
+                <span class="word">Starts</span>
+                <span class="word">With</span>
+                <span class="word">You.</span>
+            </h1>
+            <p class="hero-subheading">Empowering Indians to make small, measurable environmental changes—starting today.</p>
+            <div class="hero-buttons">
+                <button class="cta-button" data-scroll="calculators">
+                    <span>🌱</span> Calculate Your Impact
+                </button>
+                <button class="cta-button" data-scroll="quiz">
+                    <span>🧠</span> Test Your Green Knowledge
+                </button>
+                <button class="cta-button" data-scroll="chatbot">
+                    <span>🤖</span> Talk to EcoBuddy
+                </button>
+            </div>
+        </div>
+        <div class="stats-ticker">
+            <div class="ticker-content">
+                <span>India produces 62M tonnes of waste/year</span>
+                <span>•</span>
+                <span>Over 1.2B people need clean air</span>
+                <span>•</span>
+                <span>Every small action counts</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculators Section -->
+    <section id="calculators" class="section calculators-section">
+        <div class="container">
+            <h2 class="section-title">🌿 Calculate Your Impact</h2>
+            <p class="section-subtitle">Understand your environmental footprint with these simple calculators</p>
+            
+            <div class="calculators-grid">
+                <!-- Electricity Calculator -->
+                <div class="calculator-card" data-tilt>
+                    <div class="card-header">
+                        <span class="card-icon">🔌</span>
+                        <h3>Electricity Footprint</h3>
+                    </div>
+                    <div class="calculator-content">
+                        <div class="input-group">
+                            <label for="electricity-units">Monthly Units (kWh)</label>
+                            <input type="number" id="electricity-units" min="0" placeholder="Enter units">
+                        </div>
+                        <div class="input-group">
+                            <label>Usage Type</label>
+                            <div class="toggle-buttons">
+                                <button class="toggle-btn active" data-type="home">Home</button>
+                                <button class="toggle-btn" data-type="hostel">Hostel</button>
+                                <button class="toggle-btn" data-type="office">Office</button>
+                            </div>
+                        </div>
+                        <button class="calculate-btn" data-calc="electricity">Calculate</button>
+                        <div class="result-container">
+                            <div class="result-gauge">
+                                <svg class="gauge-svg" viewBox="0 0 200 120">
+                                    <path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="var(--color-bg-secondary)" stroke-width="12"/>
+                                    <path class="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="var(--color-primary)" stroke-width="12" stroke-dasharray="251.2" stroke-dashoffset="251.2"/>
+                                </svg>
+                                <div class="gauge-value">0</div>
+                            </div>
+                            <div class="result-text">
+                                <span class="result-label">CO₂ Emissions:</span>
+                                <span class="result-number" id="electricity-result">0 kg/month</span>
+                            </div>
+                        </div>
+                        <div class="advice-card" id="electricity-advice"></div>
+                    </div>
+                </div>
+
+                <!-- Water Calculator -->
+                <div class="calculator-card" data-tilt>
+                    <div class="card-header">
+                        <span class="card-icon">🚿</span>
+                        <h3>Water Usage</h3>
+                    </div>
+                    <div class="calculator-content">
+                        <div class="input-group">
+                            <label>Input Mode</label>
+                            <div class="toggle-buttons">
+                                <button class="toggle-btn active" data-mode="buckets">Buckets/Day</button>
+                                <button class="toggle-btn" data-mode="shower">Shower Minutes</button>
+                            </div>
+                        </div>
+                        <div class="input-group" id="water-input-buckets">
+                            <label for="water-buckets">Buckets per Day</label>
+                            <input type="number" id="water-buckets" min="0" placeholder="Enter buckets">
+                        </div>
+                        <div class="input-group hidden" id="water-input-shower">
+                            <label for="water-shower">Shower Minutes per Day</label>
+                            <input type="number" id="water-shower" min="0" placeholder="Enter minutes">
+                        </div>
+                        <div class="input-group">
+                            <label for="water-family">Family Size</label>
+                            <input type="range" id="water-family" min="1" max="10" value="4">
+                            <span class="slider-value">4</span>
+                        </div>
+                        <button class="calculate-btn" data-calc="water">Calculate</button>
+                        <div class="result-container">
+                            <div class="result-text">
+                                <span class="result-label">Monthly Usage:</span>
+                                <span class="result-number" id="water-result">0 litres</span>
+                            </div>
+                            <div class="comparison-chart">
+                                <div class="chart-bar">
+                                    <div class="chart-label">Your Usage</div>
+                                    <div class="chart-fill" id="water-chart-user" style="width: 0%"></div>
+                                </div>
+                                <div class="chart-bar">
+                                    <div class="chart-label">Average Indian Household</div>
+                                    <div class="chart-fill average" id="water-chart-avg" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transport Calculator -->
+                <div class="calculator-card" data-tilt>
+                    <div class="card-header">
+                        <span class="card-icon">🚗</span>
+                        <h3>Transport Emissions</h3>
+                    </div>
+                    <div class="calculator-content">
+                        <div class="input-group">
+                            <label>Transport Mode</label>
+                            <div class="mode-selector">
+                                <button class="mode-btn" data-mode="bike">🚲 Bike</button>
+                                <button class="mode-btn" data-mode="car">🚗 Car</button>
+                                <button class="mode-btn" data-mode="bus">🚌 Bus</button>
+                                <button class="mode-btn" data-mode="metro">🚇 Metro</button>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="transport-distance">Distance per Day (km)</label>
+                            <input type="number" id="transport-distance" min="0" step="0.1" placeholder="Enter km">
+                        </div>
+                        <button class="calculate-btn" data-calc="transport">Calculate</button>
+                        <div class="result-container">
+                            <div class="result-text">
+                                <span class="result-label">CO₂ Emissions:</span>
+                                <span class="result-number" id="transport-result">0 kg/month</span>
+                            </div>
+                            <div class="comparison-flip" id="transport-comparison"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fill-in-the-Blanks Section -->
+    <section id="learn" class="section learn-section">
+        <div class="container">
+            <h2 class="section-title">✍️ Learn by Doing</h2>
+            <p class="section-subtitle">Test your knowledge with interactive fill-in-the-blanks</p>
+            
+            <div class="learn-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="learn-progress"></div>
+                </div>
+                <div class="question-card" id="learn-card">
+                    <div class="question-number">Question <span id="learn-current">1</span> of <span id="learn-total">6</span></div>
+                    <p class="question-text" id="learn-question"></p>
+                    <div class="answer-input-group">
+                        <input type="text" id="learn-answer" class="answer-input" placeholder="Type your answer...">
+                        <button class="check-btn" id="learn-check">Check</button>
+                    </div>
+                    <div class="feedback-container" id="learn-feedback"></div>
+                </div>
+                <button class="next-btn hidden" id="learn-next">Next Question →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="section quiz-section">
+        <div class="container">
+            <h2 class="section-title">🧠 Test Your Green Knowledge</h2>
+            <p class="section-subtitle">Choose a quiz mode and challenge yourself</p>
+            
+            <div class="quiz-tabs">
+                <button class="quiz-tab active" data-quiz="beginner">Beginner Green Quiz</button>
+                <button class="quiz-tab" data-quiz="habits">Daily Eco Habits Quiz</button>
+                <button class="quiz-tab" data-quiz="india">India Environment Quiz</button>
+            </div>
+
+            <div class="quiz-container" id="quiz-container">
+                <div class="quiz-welcome" id="quiz-welcome">
+                    <p>Select a quiz mode above to begin!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EcoBuddy Chatbot -->
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-bubble" id="chatbot-bubble">
+            <span>🤖</span>
+        </div>
+        <div class="chatbot-panel hidden" id="chatbot-panel">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">
+                    <svg viewBox="0 0 100 100" class="avatar-svg">
+                        <circle cx="50" cy="50" r="45" fill="var(--color-primary)"/>
+                        <circle cx="35" cy="40" r="5" fill="var(--color-bg)"/>
+                        <circle cx="65" cy="40" r="5" fill="var(--color-bg)"/>
+                        <path d="M 30 60 Q 50 70 70 60" stroke="var(--color-bg)" stroke-width="3" fill="none"/>
+                    </svg>
+                </div>
+                <h3>EcoBuddy 🌱</h3>
+                <button class="chatbot-close" id="chatbot-close">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot-message">
+                    <p>Hi! I'm EcoBuddy. How can I help you go green today? 👋</p>
+                </div>
+            </div>
+            <div class="chatbot-chips">
+                <button class="chip-btn" data-topic="plastic">Reduce Plastic</button>
+                <button class="chip-btn" data-topic="electricity">Save Electricity</button>
+                <button class="chip-btn" data-topic="water">Water Conservation</button>
+                <button class="chip-btn" data-topic="transport">Green Transport</button>
+                <button class="chip-btn" data-topic="composting">Composting</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Greener India Actions Section -->
+    <section id="actions" class="section actions-section">
+        <div class="container">
+            <h2 class="section-title">🇮🇳 Greener India Actions</h2>
+            <p class="section-subtitle">Practical steps for rural and urban India</p>
+            
+            <div class="actions-grid">
+                <div class="action-column">
+                    <h3>🌾 Rural Actions</h3>
+                    <div class="action-cards">
+                        <div class="action-card" data-flip>
+                            <div class="card-front">
+                                <span class="action-icon">🌱</span>
+                                <h4>Composting at Home</h4>
+                            </div>
+                            <div class="card-back">
+                                <p>Turn kitchen waste into nutrient-rich compost. Use a pit or container, layer green and brown waste, and turn weekly.</p>
+                                <button class="learn-more-btn">Learn More</button>
+                            </div>
+                        </div>
+                        <div class="action-card" data-flip>
+                            <div class="card-front">
+                                <span class="action-icon">💧</span>
+                                <h4>Rainwater Harvesting</h4>
+                            </div>
+                            <div class="card-back">
+                                <p>Collect rainwater from rooftops. Simple systems can store 10,000+ litres annually, reducing groundwater dependency.</p>
+                                <button class="learn-more-btn">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-column">
+                    <h3>🏙️ Urban Actions</h3>
+                    <div class="action-cards">
+                        <div class="action-card" data-flip>
+                            <div class="card-front">
+                                <span class="action-icon">🚌</span>
+                                <h4>Public Transport</h4>
+                            </div>
+                            <div class="card-back">
+                                <p>Using buses and metros reduces emissions by 70% compared to private vehicles. Plan routes and save money too!</p>
+                                <button class="learn-more-btn">Learn More</button>
+                            </div>
+                        </div>
+                        <div class="action-card" data-flip>
+                            <div class="card-front">
+                                <span class="action-icon">🌳</span>
+                                <h4>Tree Plantation</h4>
+                            </div>
+                            <div class="card-back">
+                                <p>Plant native species like Neem, Peepal, or Mango. Water regularly for first 2 years. One tree = 20kg CO₂ absorbed/year.</p>
+                                <button class="learn-more-btn">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Green Pledge -->
+            <div class="pledge-section">
+                <h3>🧾 My Green Pledge</h3>
+                <p>Commit to these actions and make a difference:</p>
+                <div class="pledge-checklist">
+                    <label class="pledge-item">
+                        <input type="checkbox" class="pledge-checkbox" value="bag">
+                        <span class="checkmark"></span>
+                        <span class="pledge-text">I will carry a cloth bag</span>
+                    </label>
+                    <label class="pledge-item">
+                        <input type="checkbox" class="pledge-checkbox" value="water">
+                        <span class="checkmark"></span>
+                        <span class="pledge-text">I will save water daily</span>
+                    </label>
+                    <label class="pledge-item">
+                        <input type="checkbox" class="pledge-checkbox" value="plastic">
+                        <span class="checkmark"></span>
+                        <span class="pledge-text">I will reduce single-use plastic</span>
+                    </label>
+                    <label class="pledge-item">
+                        <input type="checkbox" class="pledge-checkbox" value="transport">
+                        <span class="checkmark"></span>
+                        <span class="pledge-text">I will use public transport when possible</span>
+                    </label>
+                </div>
+                <button class="pledge-submit-btn" id="pledge-submit">Submit My Pledge</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pledge Success Overlay -->
+    <div class="pledge-overlay hidden" id="pledge-overlay">
+        <div class="pledge-success">
+            <div class="success-icon">🌿</div>
+            <h2>Thank you for committing to a Greener India!</h2>
+            <p>Every small action creates a big impact. Together, we can make a difference.</p>
+            <button class="close-overlay-btn" id="close-overlay">Continue</button>
+        </div>
+        <div class="confetti-container" id="confetti"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/calculators.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
